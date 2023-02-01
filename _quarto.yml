@@ -1,0 +1,28 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Oijee! Statistika"
+  author: "Jüri Lillemets"
+  date: today
+  date-format: iso
+  favicon: logo.png
+  sidebar: 
+    logo: logo.png
+  chapters: 
+  - index.qmd
+  - sissejuhatus.qmd
+  - viited.qmd
+
+bibliography: ../../notes/assets/library.json
+csl: ../../notes/assets/apa.csl
+
+reference-location: margin
+format:
+  html:
+    theme: cosmo
+    css: style.css
+execute: 
+  freeze: auto
+  message: false

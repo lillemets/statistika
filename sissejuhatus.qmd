@@ -1,0 +1,43 @@
+# Sissejuhatus
+
+Järgnevas näites kasutame andmeid maailma riikde kohta.
+
+```{r}
+library('magrittr')
+riigid <- read.csv('andmed/countries.csv')
+str(riigid)
+```
+
+
+## Sagedused
+
+Absoluutsete sageduste leidmiseks saame kasutada funktsiooni `table()`. Suhtelised sagedused saab kuvada nimetatud funktsiooni tulemuse alusel omakorda funktsiooniga `prop.table()`. Vaikimisi kuvab see funktsioon osakaalud kõikide lahtrite summast, kuid argumendiga `margin` saab täpsustada, kas kuvada osakaalud ridade või veergude summast.
+
+```{r}
+table(riigid$region)
+table(riigid$region, riigid$population < 1000000)
+rahvaarv <- table(riigid$region, riigid$population < 1000000)
+prop.table(rahvaarv) %>% round(2) # Osakaalud summast
+prop.table(rahvaarv, margin = 1)  %>% round(2) # Osakaalud ridade summast
+prop.table(rahvaarv, margin = 2)  %>% round(2) # Osakaalud veergude summast
+```
+
+## Vahemikud
+
+Arvtunnuse korral ei ole enamasti otstarbekas leida iga väärtuse esinemissagedus, vaid leida need sagedused mingites vahemikes (sagedusklassides). Arvtunnuse väärtuste vahemikesse jaotamiseks (intervallimiseks) saab kasutada funktsiooni `cut()`, millele tuleb argumendiga `breaks` ette anda vahemike piirid. Argumendi `right` väärtus määrab, kas ka vahemiku nö parempoolse arvu väärtused arvestatakse vahemikku kuuluvateks või mitte.
+
+```{r}
+piirid <- seq(0,100,20)
+piirid
+cut(riigid$literacy, breaks = piirid, right = F) %>% table
+cut(riigid$literacy, breaks = piirid, right = T) %>% table
+```
+
+## Histogramm
+
+Histogrammi joonistamiseks on R keeles mugav kasutada funktsiooni `hist()`. Vahemikud leitakse vaikimisi Sturgesi valemiga $k = 1 + log_2n$, kus $n$ on vaatluste arv. Siiski ei ole vahemike arv histogrammil alati võrdne valemi tulemusel saadud arvuga, sest vahemike piirid ümardatakse.
+
+```{r}
+nclass.Sturges(riigid$netmigration)
+hist(riigid$netmigration)
+```

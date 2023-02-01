@@ -1,0 +1,7 @@
+# Saateks {.unnumbered}
+
+Sellel lehel on esitatud juhend tavapärasemate statistika toimingute rakednamiseks R keeles. Juhendis käsitletavad teemad vastavad õpikule "Statistika õpik majanduseriala üliõpilastele" [@sauga20statistika]. Nii on tegemist omamoodi täiendusega õpikule, milles on statistika toimingute rakendamist selgitatud ainult tabelarvutuse rakenduste abil.
+
+Juhend eeldab oskust kasutada R keelt lihtsamateks tegevusteks. Põhilised tegevused R keeles on seletatud mh [andmeanalüüsi õpikus](https://www.oij.ee/andmeteadus/kasutus.html).
+
+See juhend on abivahend kursuse Tõenäosusteooria ja statistika jaoks Eesti Maaülikoolis.
